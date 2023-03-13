@@ -16,12 +16,13 @@ class Grade
 public:
     Grade()
     {
-
         char aux[100] = "";
         if(todaysdate)
             strcpy(aux, todaysdate);
         else strcpy(aux, "Unknown");
         date = new char[strlen(aux)+1];
+        description = nullptr;
+        discipline = nullptr;
         strcpy(date, aux);
     };
     Grade(int x, char* data_, char *discipline_, char* observatie_ = (char*)"")
@@ -70,7 +71,6 @@ public:
     void SetDescriere(char* desc)
     {
         delete[] description;
-
         description = new char[strlen(desc)+1];
         strcpy(description, desc);
     }
@@ -178,8 +178,7 @@ public:
     }
     ~Student()
     {
-        if(grades!= nullptr)
-            delete[] grades;
+        delete[] grades;
         delete[] name;
         delete[] clasa;
     }
