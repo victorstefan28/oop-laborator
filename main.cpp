@@ -142,8 +142,8 @@ public:
     Student()
     {
         activ = 1;
-        clasa = new char[1];
-        name = new char[1];
+        clasa = nullptr;
+        name = nullptr;
         grades = new Grade[1];
         size_= 1;
         no_grades = 0;
@@ -276,8 +276,7 @@ public:
     {
         file = new char[strlen(file_)+1];
         strcpy(file, file_);
-        message = new char[1];
-        strcpy(message, "");
+        message = nullptr;
         user = new char[2];
         strcpy(user, "");
     }
@@ -338,6 +337,7 @@ void init_date()
     todaysdate = new char[strlen(buf)+1];
     strcpy(todaysdate, buf);
     cout<<"Data de azi este:"<<todaysdate<<"\n";
+    delete now;
 }
 void erase_elev(char* file, char* elev_nume)
 {
