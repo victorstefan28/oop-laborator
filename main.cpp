@@ -144,7 +144,7 @@ public:
         activ = 1;
         clasa = nullptr;
         name = nullptr;
-        grades = new Grade[1];
+        grades = nullptr;
         size_= 1;
         no_grades = 0;
     }
