@@ -284,6 +284,7 @@ public:
     {
         file = new char[strlen(file_)+1];
         strcpy(file, file_);
+        message = nullptr;
         user = new char[strlen(user_)+1];
         strcpy(user, user_);
     }
