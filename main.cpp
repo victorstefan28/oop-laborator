@@ -19,6 +19,7 @@ public:
         date = nullptr;
         description = nullptr;
         discipline = nullptr;
+        value = 0;
     };
     Grade(int x, char* data_, char *discipline_, char* observatie_ = (char*)"")
     {
@@ -91,11 +92,11 @@ public:
     {
         return discipline;
     }
-    bool operator==(Grade &rhs) const
+    bool operator==(const Grade &rhs) const
     {
         return strcmp(rhs.discipline, discipline) && value == rhs.value;
     }
-    bool operator!=(Grade &rhs) const
+    bool operator!=(const Grade &rhs) const
     {
         return !(*this == rhs);
     }
@@ -205,7 +206,7 @@ public:
         clasa = new char[strlen(clasa_)+1];
         strcpy(clasa, clasa_);
     }
-    void add_grade(Grade obj_grade)
+    void add_grade(const Grade obj_grade)
     {
         ///grades.push_back(obj_grade);
         if(no_grades == size_)
@@ -234,7 +235,7 @@ public:
         for(uint32_t i = 0; i<no_grades; i++)
             os<<i+1<<"."<<grades[i];
     }
-    friend ostream& operator<<(ostream& os, Student& rhs)
+    friend ostream& operator<<(ostream& os, const Student& rhs)
     {
         rhs.afis(os);
         return os;
@@ -272,7 +273,7 @@ class log_instance
     char* user;
 
 public:
-    log_instance(char* file_)
+    explicit log_instance(char* file_)
     {
         file = new char[strlen(file_)+1];
         strcpy(file, file_);
@@ -311,7 +312,7 @@ public:
     }
 };
 
-void Add_Student(Student* &x, uint32_t &sz, uint32_t &no, Student in)
+void Add_Student(Student* &x, uint32_t &sz, uint32_t &no, const Student in)
 {
     if(no == sz)
     {
