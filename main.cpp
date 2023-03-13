@@ -399,7 +399,7 @@ int main()
     char line[1024] = "";
     while(read_note.getline(line, 1024))
     {
-        char nume[128] = "", data[128] = "", materie[128] = "";
+        char numeeee[128] = "", data[128] = "", materie[128] = "";
         int nota = 0;
 
         char* ptr = strtok(line, ",");
@@ -409,7 +409,7 @@ int main()
                 continue;
 
             if(i==0)
-                strcpy(nume, ptr);
+                strcpy(numeeee, ptr);
             if(i==1)
             {
                 if(strlen(ptr)==2)
@@ -424,7 +424,7 @@ int main()
         }
 
         for(uint32_t i = 0; i<no_students; i++)
-            if(!strcmp(nume, Students[i].GetName()))
+            if(!strcmp(numeeee, Students[i].GetName()))
                 Students[i].add_grade(nota, materie, data);
 
     }
