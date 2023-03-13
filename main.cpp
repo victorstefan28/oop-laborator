@@ -43,9 +43,12 @@ public:
     }
     ~Grade()
     {
-        delete[] description;
-        delete[] date;
-        delete[] discipline;
+        if(description)
+            delete[] description;
+        if(date)
+            delete[] date;
+        if(discipline)
+            delete[] discipline;
     }
     Grade(const Grade& o)
     {
@@ -182,10 +185,12 @@ public:
     }
     ~Student()
     {
-        if(grades != nullptr)
+        if(grades)
             delete[] grades;
-        delete[] name;
-        delete[] clasa;
+        if(name)
+            delete[] name;
+        if(clasa)
+            delete[] clasa;
     }
     int GetActiv() const
     {
