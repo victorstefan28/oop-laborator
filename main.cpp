@@ -22,16 +22,25 @@ public:
             strcpy(aux, todaysdate);
         else strcpy(aux, "Unknown");
         date = new char[strlen(aux)+1];
-        description = new char[1];
+        description = new char[2];
         value = x;
         strcpy(description, "");
         strcpy(date, aux);
     };
-    Grade(){};
+    Grade(){
+        description = new char[2];
+        char aux[100] = "";
+        if(todaysdate)
+            strcpy(aux, todaysdate);
+        else strcpy(aux, "Unknown");
+        date = new char[strlen(aux)+1];
+        strcpy(date, aux);
+        discipline = new char[2];
+        strcpy(discipline, "");
+    };
     Grade(int x, char* data_, char *discipline_, char* observatie_ = (char*)"")
     {
         date = new char[strlen(data_)+1];
-
         description = new char[strlen(observatie_)+1];
         discipline = new char[strlen(discipline_)+1];
         value = x;
@@ -154,7 +163,7 @@ public:
         activ = 1;
         clasa = new char[1];
         name = new char[1];
-        grades = new Grade[1];
+        grades = new Grade[2];
         size_= 1;
         no_grades = 0;
     }
@@ -162,7 +171,7 @@ public:
     {
         name = new char[strlen(name_)+1];
         clasa = new char[strlen(clasa_)+1];
-        grades = new Grade[1];
+        grades = new Grade[2];
         no_grades = 0;
         size_= 1;
         activ = 1;
