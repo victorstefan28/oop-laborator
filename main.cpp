@@ -111,6 +111,8 @@ public:
     }
     Grade& operator=(const Grade& rhs)
     {
+        if(this == &rhs)
+            return *this;
         SetData(rhs.date);
         SetDescriere(rhs.description);
         SetNota(rhs.value);
@@ -153,6 +155,8 @@ public:
         clasa = new char[1];
         name = new char[1];
         grades = new Grade[1];
+        size_= 1;
+        no_grades = 0;
     }
     Student(char* name_, char* clasa_)
     {
@@ -174,9 +178,7 @@ public:
         size_= o.size_;
         strcpy(name, o.name);
         strcpy(clasa, o.clasa);
-        for(uint32_t i = 0; i<o.size_; i++)
-            grades[i] = o.grades[i];
-
+        memcpy((void*)grades, (void*)o.grades, sizeof(Grade)*o.size_);
         activ = 1;
     }
     ~Student()
@@ -261,6 +263,8 @@ public:
     friend void Add_Student(Student* &x, int &sz, int &no);
     Student& operator=(const Student &rhs)
     {
+        if(this == &rhs)
+            return *this;
         SetClasa(rhs.clasa);
         SetName(rhs.name);
         grades = new Grade[rhs.size_];
@@ -283,6 +287,7 @@ public:
         file = new char[strlen(file_)+1];
         strcpy(file, file_);
         message = new char[1];
+        strcpy(message, "");
         user = new char[2];
         strcpy(user, "");
     }
