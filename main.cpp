@@ -337,7 +337,6 @@ void init_date()
     todaysdate = new char[strlen(buf)+1];
     strcpy(todaysdate, buf);
     cout<<"Data de azi este:"<<todaysdate<<"\n";
-    delete now;
 }
 void erase_elev(char* file, char* elev_nume)
 {
