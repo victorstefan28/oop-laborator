@@ -16,7 +16,8 @@ class Grade
 public:
     Grade()
     {
-        description = new char[1];
+        description = new char[10];
+        discipline = new char[10];
         char aux[100] = "";
         if(todaysdate)
             strcpy(aux, todaysdate);
@@ -24,7 +25,7 @@ public:
         date = new char[strlen(aux)+1];
         strcpy(description, "");
         strcpy(date, aux);
-        discipline = new char[1];
+
         strcpy(discipline, "");
     };
     Grade(int x, char* data_, char *discipline_, char* observatie_ = (char*)"")
@@ -181,7 +182,8 @@ public:
     }
     ~Student()
     {
-        delete[] grades;
+        if(grades != nullptr)
+            delete[] grades;
         delete[] name;
         delete[] clasa;
     }
@@ -391,7 +393,6 @@ int main()
         strcat(nume, prenume);
         Student o(nume, clasa);
         Add_Student(Students, sz_students, no_students, o);
-
     }
     ifstream read_note("note.in");
     char line[1024] = "";
