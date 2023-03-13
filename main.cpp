@@ -16,17 +16,17 @@ class Grade
 public:
     Grade()
     {
-        description = new char[10];
-        discipline = new char[10];
+        description = new char[strlen(".")+1];
+        discipline = new char[strlen(".")+1];
         char aux[100] = "";
         if(todaysdate)
             strcpy(aux, todaysdate);
         else strcpy(aux, "Unknown");
         date = new char[strlen(aux)+1];
-        strcpy(description, "");
+        strcpy(description, ".");
         strcpy(date, aux);
 
-        strcpy(discipline, "");
+        strcpy(discipline, ".");
     };
     Grade(int x, char* data_, char *discipline_, char* observatie_ = (char*)"")
     {
