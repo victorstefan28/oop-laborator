@@ -85,19 +85,19 @@ public:
         discipline = new char[strlen(discipline_)+1];
         strcpy(discipline, discipline_);
     }
-    const int GetGrade() const
+    int GetGrade() const
     {
         return value;
     }
-    const char* GetDate() const
+    char* GetDate() const
     {
         return date;
     }
-    const char* GetDescription() const
+    char* GetDescription() const
     {
         return description;
     }
-    const char* GetDiscipline() const
+    char* GetDiscipline() const
     {
         return discipline;
     }
