@@ -150,6 +150,9 @@ public:
     Student()
     {
         activ = 1;
+        clasa = new char[1];
+        name = new char[1];
+        grades = new Grade[1];
     }
     Student(char* name_, char* clasa_)
     {
@@ -171,7 +174,9 @@ public:
         size_= o.size_;
         strcpy(name, o.name);
         strcpy(clasa, o.clasa);
-        memcpy(grades, o.grades, sizeof(Grade)*o.size_);
+        for(uint32_t i = 0; i<o.size_; i++)
+            grades[i] = o.grades[i];
+
         activ = 1;
     }
     ~Student()
