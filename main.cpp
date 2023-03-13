@@ -128,7 +128,8 @@ public:
     }
     friend istream& operator>>(istream& is, Grade &rhs)
     {
-        is>>rhs.value>>rhs.discipline;
+        is>>rhs.value;
+        is.get(rhs.discipline,255);
         return is;
     }
 
@@ -245,7 +246,8 @@ public:
     {
         int nota;
         char discipline[256];
-        is>>nota>>discipline;
+        is>>nota;
+        is.get(discipline,255);
 
 
         rhs.add_grade(nota, discipline, (char*)"");
