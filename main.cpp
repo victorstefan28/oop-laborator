@@ -270,7 +270,7 @@ public:
         grades = new Grade[rhs.size_];
         no_grades = rhs.no_grades;
         size_= rhs.size_;
-        memcpy(grades, rhs.grades, sizeof(Grade)*rhs.size_);
+        memcpy((void*)grades, (void*)rhs.grades, sizeof(Grade)*rhs.size_);
         return *this;
     }
 
