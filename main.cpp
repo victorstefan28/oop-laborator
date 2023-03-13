@@ -467,9 +467,9 @@ start:
                 char materie[32];
                 cin>>materie;
                 Students[id].add_grade(nota, materie, todaysdate);
-                char buf_log[128] = "";
+                char buf_log[2048] = "";
                 sprintf(buf_log, "Elevul %s a primit nota %d; data: %s\n", Students[id].GetName(), nota, todaysdate);
-                char buf_note[256] = "";
+                char buf_note[2048] = "";
                 sprintf(buf_note, "%s,%d,%s,%s\n", Students[id].GetName(), nota, materie, todaysdate);
                 log.push_message(buf_log);
                 grade_file.push_message(buf_note);
@@ -485,7 +485,7 @@ start:
 
                     erase_elev((char*)"elevi.in", Students[id].GetName());
                     erase_elev((char*)"note.in", Students[id].GetName());
-                    char push[64];
+                    char push[2048];
                     sprintf(push, "Elevul %s sters\n", Students[id].GetName());
                 }
             }
@@ -504,7 +504,7 @@ start:
             char clasaa[16];
             cin>>clasaa;
             Add_Student(Students, sz_students, no_students, Student(namee, clasaa));
-            char push[256];
+            char push[2048];
             sprintf(push, "%s %s\n", namee, clasaa);
             elevi_file.push_message(push);
             sprintf(push, "Elev adaugat: %s\n", namee);
