@@ -9,7 +9,7 @@ Student::Student() :  name(""), clasa(""), activ(1)
     name = "";*/
 
 }
-Student::Student(std::string name_, std::string clasa_) : name(name_), clasa(clasa_), activ(1)
+Student::Student(const std::string& name_, const std::string& clasa_) : name(name_), clasa(clasa_), activ(1)
 {
 /*name = new char[strlen(name_)+1];
 clasa = new char[strlen(clasa_)+1];

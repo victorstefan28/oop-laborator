@@ -18,7 +18,7 @@ class Student
 public:
     Student();
 
-    Student(std::string name_, std::string clasa_);
+    Student(const std::string& name_, const std::string& clasa_);
     Student(const Student& o);
     ~Student();
     int GetActiv() const;

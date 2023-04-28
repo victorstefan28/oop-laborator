@@ -3,10 +3,9 @@
 //
 
 #include "../headers/mark.h"
-Mark::Mark()
+Mark::Mark() : date(""), discipline("")
 {
-    date = "";
-    discipline = "";
+
 }
 Mark::Mark(const Mark &o)
 {
@@ -56,7 +55,7 @@ std::ostream& operator<<(std::ostream& os, const Mark &rhs)
 
 std::istream& operator>>(std::istream& is, Mark &rhs)
 {
-    //set todays date todo
+    
     is>>rhs.discipline;
     return is;
 }

@@ -14,11 +14,11 @@ class log_instance
     std::string user;
 
 public:
-    explicit log_instance(std::string file_) : message(""), file(file_), user("")
+    explicit log_instance(const std::string& file_) : message(""), file(file_), user("")
     {
 
     }
-    log_instance(std::string file_, std::string user_) : message(""), file(file_), user(user_)
+    log_instance(const std::string& file_, const std::string& user_) : message(""), file(file_), user(user_)
     {
 
     }

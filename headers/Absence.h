@@ -14,9 +14,9 @@ public:
     Absence(const std::string& tip_, const std::string& discipline_);
     Absence& operator=(const Absence &rhs);
 
-    Absence(const Absence& o) : Mark(o)
+    Absence(const Absence& o) : Mark(o), tip(o.GetTip())
     {
-        tip = o.GetTip();
+
     }
     std::string GetTip() const
     {
