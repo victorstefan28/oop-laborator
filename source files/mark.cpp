@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& os, const Mark &rhs)
 
 std::istream& operator>>(std::istream& is, Mark &rhs)
 {
-    
+
     is>>rhs.discipline;
     return is;
 }

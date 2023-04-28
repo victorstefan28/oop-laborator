@@ -24,15 +24,9 @@ activ = 1;
 */
 
 }
-Student::Student(const Student& o)
+Student::Student(const Student& o) : name(o.GetName()), clasa(o.GetClasa()), activ(o.GetActiv())
 {
-    name = o.GetName();
-    clasa = o.GetClasa();
-
-    /*strcpy(name, o.name);
-    strcpy(clasa, o.clasa);
-    memcpy((void*)grades, (void*)o.grades, sizeof(Grade)*o.size_);*/
-    activ = o.GetActiv();
+    
 }
 Student::~Student()
 {
