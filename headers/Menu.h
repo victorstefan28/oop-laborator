@@ -34,7 +34,7 @@ public:
     {
         if(s_message_.empty())
             throw invalid_arg("Trying to parse empty string to output file" + file);
-        auto message_ = s_message_.c_str();
+
         std::ofstream out(file, std::ios_base::app);
         message = s_message_;
         if(out.is_open())

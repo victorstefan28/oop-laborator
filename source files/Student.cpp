@@ -32,7 +32,7 @@ Student::Student(const Student& o)
     memcpy((void*)grades, (void*)o.grades, sizeof(Grade)*o.size_);*/
     activ = o.GetActiv();
 }
-~Student::Student()
+Student::~Student()
 {
     marks.clear();
 }
