@@ -2,7 +2,7 @@
 // Created by vik on 4/26/2023.
 //
 #include "../headers/headers.h"
-Student::Student() : activ(1), clasa(""), name("")
+Student::Student() :  name(""), clasa(""), activ(1)
 {
     /*activ = 1;
     clasa = "";
