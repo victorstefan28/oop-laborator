@@ -57,7 +57,7 @@ public:
     }
     Menu()
     {
-        SetDate();
+        Menu::SetDate();
     }
     static void SetDate();
     void Add_Student(std::vector<std::shared_ptr<Student>>& x, Student in);

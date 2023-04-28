@@ -22,7 +22,7 @@ Grade::Grade(int value_, std::string discipline_) : Mark(discipline_)
 }
 
 void Grade::afiseaza(std::ostream& os) const {
-    std::cout<<"Nota "<<GetValue()<<" la materia "<<GetDiscipline()<<'\n';
+    os<<"Nota "<<GetValue()<<" la materia "<<GetDiscipline()<<'\n';
 }
 
 bool Grade::operator==(const Grade &rhs) const {
