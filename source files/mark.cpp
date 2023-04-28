@@ -67,7 +67,7 @@ void Mark::SetDiscipline(std::string disc)
 std::string Mark::GetDiscipline() const
 {
     return discipline;
-};
+}
 
 Mark::~Mark() = default;
 
