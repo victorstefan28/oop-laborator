@@ -11,3 +11,11 @@ const char* input_exception::what() const throw()
 
     return msg.c_str();
 }
+
+invalid_arg::invalid_arg(std::string msg_) : msg(msg_+'\n') {};
+invalid_arg::invalid_arg() : msg("Argument passed is invalid\n") {};
+const char* invalid_arg::what() const throw()
+{
+
+    return msg.c_str();
+}

@@ -37,3 +37,11 @@ std::ostream& operator<<(std::ostream& os, const Grade &rhs)
     rhs.afiseaza(os);
     return os;
 }
+Grade& Grade::operator=(const Grade &rhs)
+{
+    if(this == &rhs)
+        return *this;
+    Mark::operator=(rhs);
+    value = rhs.GetValue();
+    return *this;
+}

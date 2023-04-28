@@ -33,7 +33,7 @@ public:
     void push_message(std::string s_message_)
     {
         if(s_message_.empty())
-            throw input_exception("Trying to parse empty string to output file" + file);
+            throw invalid_arg("Trying to parse empty string to output file" + file);
         auto message_ = s_message_.c_str();
         std::ofstream out(file, std::ios_base::app);
         message = s_message_;

@@ -23,6 +23,7 @@ public:
     bool operator==(const Grade &rhs) const;
     bool operator!=(const Grade &rhs) const;
     friend std::ostream& operator<<(std::ostream& os, const Grade &rhs);
+    Grade& operator=(const Grade &rhs);
 };
 
 

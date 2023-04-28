@@ -28,8 +28,13 @@ void Menu::erase_elev(const std::string& s_file, const std::string& s_elev_nume,
     char buf[256], aux[256];
     int ct = 0;
     auto file = s_file.c_str();
+    if(s_file.empty())
+        throw invalid_arg("erase_elev called without output file name");
+    if(s_elev_nume.empty())
+        throw invalid_arg("erase_elev called without name of student");
     auto elev_nume = s_elev_nume.c_str();
     std::ifstream in(file);
+
     std::ofstream temp("temp.tmp");
     while(in.getline(buf, 255))
     {
@@ -163,19 +168,29 @@ void Menu::run()
             ptr = strtok(NULL, ",");
 
         }
-
-        for(uint32_t i = 0; i<Students.size(); i++)
-            if(numee == Students[i]->GetName()){
-                //std::cout<<"gasit nota "<<Students[i]->GetName();
-                if(!is_abs)
-                    Students[i]->add_grade(nota, materie, data);
-                else
-                    Students[i]->add_absenta(Absence(abs_type, materie, data));
+        bool found = false;
+        try {
+            for (uint32_t i = 0; i < Students.size(); i++)
+                if (numee == Students[i]->GetName()) {
+                    //std::cout<<"gasit nota "<<Students[i]->GetName();
+                    if (!is_abs)
+                        Students[i]->add_grade(nota, materie, data);
+                    else
+                        Students[i]->add_absenta(Absence(abs_type, materie, data));
+                    found = true;
+                }
+            if (!found) {
+                throw input_exception("Found mark from an unregistered student, " + numee);
             }
-
+        }
+        catch(input_exception &e)
+        {
+            std::cout<<e.what();
+        }
     }
     read_note.close();
     in.close();
+    std::cout<<"In catalog se afla "<<Mark::getNoMarks()<<" mark-uri\n";
     do{
         start:
         std::cout<<bara;
@@ -247,7 +262,10 @@ void Menu::run()
                 catch(input_exception &e)
                 {
                     std::cout<<e.what();
-
+                }
+                catch(invalid_arg &e)
+                {
+                    std::cout<<e.what();
                 }
 
             }
@@ -276,10 +294,18 @@ void Menu::run()
                 {
                     Students[id]->SetActiv(false);
 
-                    erase_elev((std::string)"elevi.in", Students[id]->GetName());
-                    erase_elev((std::string)"note.in", Students[id]->GetName());
-                    char push[2048];
-                    snprintf(push, 2048, "Elevul %s sters\n", Students[id]->GetName().c_str());
+                    try{
+                        erase_elev((std::string) "elevi.in", Students[id]->GetName());
+                        erase_elev((std::string) "note.in", Students[id]->GetName());
+                        char push[2048];
+                        snprintf(push, 2048, "Elevul %s sters\n", Students[id]->GetName().c_str());
+                        log.push_message(push);
+                    }
+                    catch(invalid_arg &e)
+                    {
+                        std::cout << e.what();
+                    }
+
 
                 }
             }
@@ -289,8 +315,16 @@ void Menu::run()
                 int del_id = -1;
                 std::cin>>del_id;
                 auto& vec = Students[id]->GetMarks();
-                vec.erase(vec.begin() + (del_id));
-                erase_elev("note.in", Students[id]->GetName(), del_id);
+
+                try
+                {
+                    erase_elev("note.in", Students[id]->GetName(), del_id);
+                    vec.erase(vec.begin() + (del_id));
+                }
+                catch(invalid_arg &e)
+                {
+                    std::cout<<e.what()<<"Mark-ul nu a fost sters\n";
+                }
             }
         }
         if(opt == 2)
@@ -320,6 +354,10 @@ void Menu::run()
             {
                 std::cout<<e.what();
 
+            }
+            catch(invalid_arg &e)
+            {
+                std::cout<<e.what();
             }
         }
     }while(opt != 0);

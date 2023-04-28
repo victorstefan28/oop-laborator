@@ -14,5 +14,12 @@ public:
     const char* what() const throw() override;
 };
 
+class invalid_arg : std::exception {
+    std::string msg;
+public:
+    invalid_arg(std::string msg_);
+    invalid_arg();
+    const char* what() const throw() override;
+};
 
 #endif //CLION_PROJ_EXCEPTION_H

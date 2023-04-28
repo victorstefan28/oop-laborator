@@ -17,3 +17,11 @@ Absence::Absence(std::string tip_, std::string discipline_) : Mark(discipline_)
 {
     tip = tip_;
 }
+Absence& Absence::operator=(const Absence &rhs)
+{
+    if(this == &rhs)
+        return *this;
+    Mark::operator=(rhs);
+    tip = rhs.GetTip();
+    return *this;
+}
