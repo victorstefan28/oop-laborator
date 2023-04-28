@@ -12,13 +12,13 @@ void Grade::SetValue(int val)
 {
     value = val;
 }
-Grade::Grade(int value_, std::string discipline_, std::string date_) : Mark(date_, discipline_)
+Grade::Grade(int value_, const std::string& discipline_, const std::string& date_) : Mark(date_, discipline_), value(value_)
 {
-    SetValue(value_);
+
 }
-Grade::Grade(int value_, std::string discipline_) : Mark(discipline_)
+Grade::Grade(int value_, const std::string& discipline_) : Mark(discipline_), value(value_)
 {
-    SetValue(value_);
+
 }
 
 void Grade::afiseaza(std::ostream& os) const {

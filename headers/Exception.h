@@ -9,7 +9,7 @@
 class input_exception : std::exception {
     std::string msg;
 public:
-    input_exception(std::string msg_);
+    explicit input_exception(const std::string& msg_);
     input_exception();
     const char* what() const throw() override;
 };
@@ -17,7 +17,7 @@ public:
 class invalid_arg : std::exception {
     std::string msg;
 public:
-    invalid_arg(std::string msg_);
+    explicit invalid_arg(const std::string& msg_);
     invalid_arg();
     const char* what() const throw() override;
 };

@@ -30,9 +30,9 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Mark &rhs);
     friend std::istream& operator>>(std::istream& is, Mark &rhs);
 
-    void SetDiscipline(std::string disc);
+    void SetDiscipline(const std::string& disc);
     [[nodiscard]] std::string GetDiscipline() const;
-    void SetDate(std::string data_);
+    void SetDate(const std::string& data_);
     [[nodiscard]] std::string GetDate() const;
     virtual void afiseaza(std::ostream& os) const = 0;
     virtual ~Mark();

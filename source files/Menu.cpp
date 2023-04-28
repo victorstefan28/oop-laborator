@@ -19,7 +19,7 @@ void Menu::SetDate()
 
 
 
-void Menu::Add_Student(std::vector<std::shared_ptr<Student>>& x, const Student in)
+void Menu::Add_Student(std::vector<std::shared_ptr<Student>>& x, const Student& in)
 {
     x.push_back(std::make_shared<Student>(in));
 }

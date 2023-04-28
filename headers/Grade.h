@@ -17,9 +17,9 @@ public:
     {
         value = o.GetValue();
     }
-    Grade(int value_, std::string discipline_, std::string date_);
-    Grade(int value_, std::string discipline_);
-    virtual void afiseaza(std::ostream& os) const;
+    Grade(int value_, const std::string& discipline_, const std::string& date_);
+    Grade(int value_, const std::string& discipline_);
+    virtual void afiseaza(std::ostream& os) const override;
     bool operator==(const Grade &rhs) const;
     bool operator!=(const Grade &rhs) const;
     friend std::ostream& operator<<(std::ostream& os, const Grade &rhs);

@@ -2,24 +2,26 @@
 // Created by vik on 4/26/2023.
 //
 #include "../headers/headers.h"
-Student::Student()
+Student::Student() : activ(1), clasa(""), name("")
 {
-    activ = 1;
+    /*activ = 1;
     clasa = "";
-    name = "";
+    name = "";*/
 
 }
-Student::Student(std::string name_, std::string clasa_)
+Student::Student(std::string name_, std::string clasa_) : name(name_), clasa(clasa_), activ(1)
 {
 /*name = new char[strlen(name_)+1];
 clasa = new char[strlen(clasa_)+1];
 grades = new Grade[1];
 no_grades = 0;
 size_= 1;*/
+/*
 name = name_;
 clasa = clasa_;
 activ = 1;
 
+*/
 
 }
 Student::Student(const Student& o)
@@ -52,28 +54,28 @@ void Student::SetActiv(bool state)
 {
     return clasa;
 }
-void Student::SetName(std::string name_)
+void Student::SetName(const std::string& name_)
 {
     name = name_;
 }
-void Student::SetClasa(std::string clasa_)
+void Student::SetClasa(const std::string& clasa_)
 {
     clasa = clasa_;
 }
-void Student::add_grade(const Grade obj_grade)
+void Student::add_grade(const Grade& obj_grade)
 {
     auto o = std::make_shared<Grade>(obj_grade);
     Mark::incrementNoMarks();
     marks.push_back(o);
 }
-void Student::add_grade(int value, std::string discipline, std::string date)
+void Student::add_grade(int value, const std::string& discipline, const std::string& date)
 {
     Grade obj(value, discipline, date);
     if(value < 0 || value > 10)
         throw invalid_arg("Value argument passed in add_grade is invalid");
     add_grade(obj);
 }
-void Student::add_absenta(const Absence o_abs)
+void Student::add_absenta(const Absence& o_abs)
 {
     auto o = std::make_shared<Absence>(o_abs);
     Mark::incrementNoMarks();
@@ -92,7 +94,7 @@ void Student::afis(std::ostream& os) const
             std::cout<<"ID:"<<i<<'|';
             marks.at(i)->afiseaza(os);
         }
-        catch(std::out_of_range& exception)
+        catch(const std::out_of_range& exception)
         {
             std::cout<<"Out of range";
         }

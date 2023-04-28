@@ -4,18 +4,18 @@
 
 #include "../headers/headers.h"
 
-Absence::Absence() : Mark()
+Absence::Absence() : Mark(), tip("")
 {
-    tip = "";
+
 }
 
-Absence::Absence(std::string tip_, std::string discipline_, std::string date_) : Mark(date_, discipline_)
+Absence::Absence(const std::string& tip_, const std::string& discipline_, const std::string& date_) : Mark(date_, discipline_), tip(tip_)
 {
-    tip = tip_;
+
 }
-Absence::Absence(std::string tip_, std::string discipline_) : Mark(discipline_)
+Absence::Absence(const std::string& tip_, const std::string& discipline_) : Mark(discipline_), tip(tip_)
 {
-    tip = tip_;
+
 }
 Absence& Absence::operator=(const Absence &rhs)
 {

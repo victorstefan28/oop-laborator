@@ -14,23 +14,19 @@ class log_instance
     std::string user;
 
 public:
-    explicit log_instance(std::string file_)
+    explicit log_instance(std::string file_) : file(file_), message(""), user("")
     {
-        file = file_;
-        message = "";
-        user = "";
+
     }
-    log_instance(std::string file_, std::string user_)
+    log_instance(std::string file_, std::string user_) : file(file_), message(""), user(user_)
     {
-        file = file_;
-        user = user_;
-        message = "";
+
     }
     ~log_instance()
     {
 
     }
-    void push_message(std::string s_message_)
+    void push_message(const std::string& s_message_)
     {
         if(s_message_.empty())
             throw invalid_arg("Trying to parse empty string to output file" + file);
@@ -60,7 +56,7 @@ public:
         Menu::SetDate();
     }
     static void SetDate();
-    void Add_Student(std::vector<std::shared_ptr<Student>>& x, Student in);
+    void Add_Student(std::vector<std::shared_ptr<Student>>& x, const Student& in);
     void erase_elev(const std::string& s_file, const std::string& s_elev_nume, int line_no);
     void run();
 };
