@@ -8,20 +8,18 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
-
+#include <memory>
 //
+
 class Mark
 {
 protected:
     std::string date, discipline;
-    inline static int no_marks;
+
 public:
     Mark(const Mark &o);
     Mark();
-    static void incrementNoMarks() { no_marks++;}
-    static int getNoMarks() {
-        return no_marks;
-    }
+
     [[maybe_unused]] Mark(int) = delete;
     Mark(std::string date_, std::string discipline_);
     explicit Mark(std::string discipline_);
@@ -36,6 +34,7 @@ public:
     [[nodiscard]] std::string GetDate() const;
     virtual void afiseaza(std::ostream& os) const = 0;
     virtual ~Mark();
+    virtual std::shared_ptr<Mark> Clone() = 0;
 
 };
 

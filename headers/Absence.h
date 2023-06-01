@@ -26,6 +26,10 @@ public:
     {
         os<<"Absenta "<<tip<<" la "<<GetDiscipline()<<" pe data de "<<GetDate()<<'\n';
     }
+    virtual std::shared_ptr<Mark> Clone() override
+    {
+        return std::make_shared<Absence>(tip, GetDiscipline(), GetDate());
+    }
 };
 
 

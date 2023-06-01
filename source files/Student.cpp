@@ -59,7 +59,7 @@ void Student::SetClasa(const std::string& clasa_)
 void Student::add_grade(const Grade& obj_grade)
 {
     auto o = std::make_shared<Grade>(obj_grade);
-    Mark::incrementNoMarks();
+
     marks.push_back(o);
 }
 void Student::add_grade(int value, const std::string& discipline, const std::string& date)
@@ -72,7 +72,7 @@ void Student::add_grade(int value, const std::string& discipline, const std::str
 void Student::add_absenta(const Absence& o_abs)
 {
     auto o = std::make_shared<Absence>(o_abs);
-    Mark::incrementNoMarks();
+
     marks.push_back(o);
 }
 std::vector<std::shared_ptr<Mark>>& Student::GetMarks()

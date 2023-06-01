@@ -7,8 +7,20 @@
 #include "headers.h"
 #include "Absence.h"
 
+template<typename T>
+class IdGen {
+    inline static int LastId;
 
-class Student
+    const int Id;
+public:
+    IdGen() : Id(LastId++){}
+
+    const int getId() const {
+        return Id;
+    }
+};
+
+class Student : public IdGen<Student>
 {
     std::string name;
     std::string clasa;

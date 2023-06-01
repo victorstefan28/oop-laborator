@@ -24,6 +24,10 @@ public:
     bool operator!=(const Grade &rhs) const;
     friend std::ostream& operator<<(std::ostream& os, const Grade &rhs);
     Grade& operator=(const Grade &rhs);
+    virtual std::shared_ptr<Mark> Clone() override // metoda clone
+    {
+        return std::make_shared<Grade>(value, GetDiscipline(), GetDate());
+    }
 };
 
 

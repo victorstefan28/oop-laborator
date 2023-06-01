@@ -64,13 +64,13 @@ void Menu::erase_elev(const std::string& s_file, const std::string& s_elev_nume,
 void Menu::run()
 {
     log_instance log((std::string)"logs.log", (std::string)"Console");
-    log_instance grade_file((std::string)("note.in"));
-    log_instance elevi_file((std::string)"elevi.in");
+    log_instance grade_file((std::string)("../note.in"));
+    log_instance elevi_file((std::string)"../elevi.in");
     std::vector<std::shared_ptr<Student>> Students;
     /*uint32_t no_students = 0;
     uint32_t sz_students = 1;*/
     int opt = 0;
-    std::ifstream in("elevi.in");
+    std::ifstream in("../elevi.in");
     /*char nume[1024], prenume[256];
     char clasa[256];*/
     std::string nume, prenume, clasa;
@@ -96,7 +96,7 @@ void Menu::run()
         }
     }
 
-    std::ifstream read_note("note.in");
+    std::ifstream read_note("../note.in");
     char line[1024] = "";
     while(read_note.getline(line, 1024))
     {
@@ -172,7 +172,7 @@ void Menu::run()
         try {
             for (uint32_t i = 0; i < Students.size(); i++)
                 if (numee == Students[i]->GetName()) {
-                    //std::cout<<"gasit nota "<<Students[i]->GetName();
+
                     if (!is_abs)
                         Students[i]->add_grade(nota, materie, data);
                     else
@@ -190,7 +190,7 @@ void Menu::run()
     }
     read_note.close();
     in.close();
-    std::cout<<"In catalog se afla "<<Mark::getNoMarks()<<" mark-uri\n";
+    //std::cout<<"In catalog se afla "<<Mark::getNoMark<<" mark-uri\n";
     do{
         start:
         std::cout<<bara;
@@ -206,17 +206,25 @@ void Menu::run()
             std::cout<<"Elevii introdusi in catalog sunt: \n"<<bara;
             for(uint32_t i = 0; i<Students.size(); i++)
                 if(Students[i]->GetActiv())
-                    std::cout<<i+1<<". "<<Students[i]->GetName()<<' '<<Students[i]->GetClasa()<<'\n';
+                    std::cout<<Students[i]->getId()<<". "<<Students[i]->GetName()<<' '<<Students[i]->GetClasa()<<'\n';
             std::cout<<bara;
             int opt2 = 0;
             std::cout<<"Introdu id-ul unui elev pentru a efectua o modificare asupra acestuia, 0 daca nu doresti sa accesezi un elev\n"<<bara;
-            int id = -1;
+            int id = -1, id_in;
             /*std::cin>>id;
             id-=1;
             if(id == -1 || Students[id]->GetActiv() == false)
                 goto start;*/
             try{
-                std::cin>>id;
+                std::cin>>id_in;
+
+                for(uint32_t i = 0; i<Students.size(); i++)
+                    if(id_in == Students[i]->getId())
+                    {
+                        id = id_in;
+                        std::cout<<"gasit"<<id;
+                        break;
+                    }
                 id-=1;
                 if(id == -1 || Students[id]->GetActiv() == false)
                     throw input_exception("ID invalid");
@@ -226,6 +234,7 @@ void Menu::run()
                 std::cout<<e.what();
                 goto start;
             }
+
             Students[id]->afis(std::cout);
             std::cout<<bara;
             std::cout<<"Introdu tipul modificarii pe care doresti sa o faci:\n1.Adauga nota\n2.Adauga absenta\n3.Sterge elev\n4.Sterge mark\n"<<bara;
