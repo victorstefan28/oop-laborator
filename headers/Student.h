@@ -15,7 +15,7 @@ class IdGen {
 public:
     IdGen() : Id(LastId++){}
 
-    const int getId() const {
+    int getId() const {
         return Id;
     }
 };
